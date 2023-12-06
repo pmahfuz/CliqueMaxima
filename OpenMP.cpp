@@ -1,3 +1,4 @@
+#include <omp.h>
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -13,6 +14,7 @@ void BronKerbosch(vector<int>& R, vector<int>& P, vector<int>& X, vector<vector<
     }
 
     vector<int> P_temp = P; // Cópia temporária de P
+    #pragma omp parallel for
     for (int v : P_temp) {
         vector<int> R_new = R;
         R_new.push_back(v);
